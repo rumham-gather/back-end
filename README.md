@@ -26,7 +26,7 @@ _Questions or comments can be directed to [Jeff Irvine ](jirvine1212@gmail.com),
 * _JSON_
 * _Javascript_
 * _Heroku_
-* -Nodemon_
+* _Nodemon_
 
 ## External API
 
