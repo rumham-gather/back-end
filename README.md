@@ -1,38 +1,37 @@
-# Create Alchemy SQL BE
+# _Gather_
 
-## Getting started
-1. Change all the files in the `data` directory to match the data model of your app.
-1. Run `heroku create`
-1. Run `npm run setup-heroku` to create a heroku SQL database in the cloud to go with your heroku app.
-1. Run `heroku config:get DATABASE_URL` to get your heroku sql database url from the cloud. Put this in your .env file, under `DATABASE_URL`
-1. Run `npm run setup-db`
-1. Run `npm run start:watch` to start the dev server
-1. Routes are in `app.js`, not in `server.js`. This is so our tests will not launch a server every time.
+#### Gather a recipe collaboration app, 11-20-2020
 
-## HARD MODE: Override default queries
+#### By _**Jeff Irvine, Jena Boehm, Rosalie Lee, Sydney James, Katie Jones**_
 
-```js
-// OPTIONALLY pass in new queries to override defaults
+## Description
 
-const authRoutes = createAuthRoutes({
-    selectUser(email) {
-        return client.query(`
-            SELECT id, email, hash
-            FROM users
-            WHERE email = $1;
-        `,
-        [email]
-        ).then(result => result.rows[0]);
-    },
-    insertUser(user, hash) {
-        console.log(user);
-        return client.query(`
-            INSERT into users (email, hash)
-            VALUES ($1, $2)
-            RETURNING id, email;
-        `,
-        [user.email, hash]
-        ).then(result => result.rows[0]);
-    }
-});
-```
+_ Gather is a recipe application that allows users to browse, save recipes and contribute to food events with friends and family_
+
+## Setup/Installation Requirements
+
+* _Clone down repository from Git Hub to machine._
+* _Navigate to root directory._
+* _run command `npm run start:watch` in terminal to view code._
+* _View via [ghpages](https://github.com/rumham-gather/back-end) or [heroku](https://floating-caverns-16024.herokuapp.com/)._
+
+## Support and contact details
+
+_Questions or comments can be directed to [Jeff Irvine ](jirvine1212@gmail.com), [Sydney James](sydneyjames7@gmail.com),[Rosalie Lee](rosalie337@gmail.com), [Katie Jones](katiejonesyo@gmail.com), [Jena Boehm](boehmjena@gmail.com)_
+
+## Technologies Used
+
+* _Node JS_
+* _SQL_
+* _JSON_
+* _Javascript_
+* _Heroku_
+* -Nodemon_
+
+## External API
+
+* _Recipe API_ <-----> CHANGE THIS!
+
+### License
+
+Copyright (c) 2020 **_Jeff Irvine, Katie Jones, Rosalie Lee, Jena Boehm, Sydney James_**
