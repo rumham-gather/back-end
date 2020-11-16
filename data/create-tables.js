@@ -14,14 +14,28 @@ async function run() {
     await client.query(`
                 CREATE TABLE users (
                     id SERIAL PRIMARY KEY,
+                    username VARCHAR(256) NOT NULL,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
                 );           
-                CREATE TABLE animals (
+          
+                CREATE TABLE recipes (
                     id SERIAL PRIMARY KEY NOT NULL,
-                    name VARCHAR(512) NOT NULL,
-                    cool_factor INTEGER NOT NULL,
+                    title VARCHAR(256) NOT NULL,
+                    food_api_id INTEGER NOT NULL,
+                    image_url VARCHAR(512) NOT NULL,
+                    note VARCHAR(512),
+                    completed BOOLEAN NOT NULL,
                     owner_id INTEGER NOT NULL REFERENCES users(id)
+                );
+
+                CREATE TABLE events (
+                  id SERIAL PRIMARY KEY NOT NULL,
+                  title VARCHAR(256) NOT NULL,
+                  date DATETIME NOT NULL,
+                  members VARCHAR(512), 
+                  owner_id INTEGER NOT NULL REFERENCES users(id)
+                )
             );
         `);
 
