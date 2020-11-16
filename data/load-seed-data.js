@@ -14,26 +14,36 @@ async function run() {
     const users = await Promise.all(
       usersData.map(user => {
         return client.query(`
-                      INSERT INTO users (email, hash)
-                      VALUES ($1, $2)
+                      INSERT INTO users (username, email, hash)
+                      VALUES ($1, $2, $3)
                       RETURNING *;
                   `,
-        [user.email, user.hash]);
+        [user.username, user.email, user.hash]);
       })
     );
       
     const user = users[0].rows[0];
 
     await Promise.all(
-      animals.map(animal => {
+      recipes.map(recipe => {
         return client.query(`
-                    INSERT INTO animals (name, cool_factor, owner_id)
-                    VALUES ($1, $2, $3);
+                    INSERT INTO recipes (title, food_api_ip, image_url, note, completed, owner_id)
+                    VALUES ($1, $2, $3, $4, $5, $6);
                 `,
-        [animal.name, animal.cool_factor, user.id]);
+        [recipe.title, recipe.food_api_ip, recipe.image_url, recipe.note, recipe.completed, user.id]);
       })
     );
     
+
+    await Promise.all(
+      events.map(event => {
+        return client.query(`
+                    INSERT INTO recipes (title, date, members, owner_id)
+                    VALUES ($1, $2, $3, $4);
+                `,
+        [event.title, event.date, event.members, user.id]);
+      })
+    );
 
     console.log('seed data load complete', getEmoji(), getEmoji(), getEmoji());
   }
