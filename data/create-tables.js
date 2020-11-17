@@ -35,7 +35,12 @@ async function run() {
                   date DATE NOT NULL,
                   members VARCHAR(512), 
                   owner_id INTEGER NOT NULL REFERENCES users(id)
-            );
+                );
+
+                CREATE TABLE user_events (
+                  user_id INTEGER NOT NULL REFERENCES users(id),
+                  event_id INTEGER NOT NULL REFERENCES events(id)
+                );
         `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
