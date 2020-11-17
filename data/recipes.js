@@ -7,7 +7,7 @@ module.exports = [
     completed: false
   },
   {
-    title: 'Jeffs Siracha Potato Salad',
+    title: 'Jeff\'s serrano Potato Salad',
     food_api_id: 20,
     image_url: 'http://placekitten.com/200/300',
     note: 'spicy',
