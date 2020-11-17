@@ -43,7 +43,7 @@ async function run() {
                     INSERT INTO events (title, date, owner_id)
                     VALUES ($1, $2, $3);
                 `,
-        [event.title, event.date, user.id]);
+        [event.title, event.date, event.owner_id]);
       })
     );
 
