@@ -3,6 +3,7 @@ const client = require('../lib/client');
 const recipes = require('./recipes.js');
 const events = require('./events.js');
 const usersData = require('./users.js');
+const userEvents = require('./user-events.js');
 const { getEmoji } = require('../lib/emoji.js');
 
 run();
@@ -43,6 +44,16 @@ async function run() {
                     VALUES ($1, $2, $3, $4);
                 `,
         [event.title, event.date, event.members, user.id]);
+      })
+    );
+
+    await Promise.all(
+      userEvents.map(userEvent => {
+        return client.query(`
+                    INSERT INTO user_events (user_id, event_id)
+                    VALUES ($1, $2);
+                `,
+        [user.id, userEvent.event_id]);
       })
     );
 
