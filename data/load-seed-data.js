@@ -40,10 +40,10 @@ async function run() {
     await Promise.all(
       events.map(event => {
         return client.query(`
-                    INSERT INTO events (title, date, members, owner_id)
-                    VALUES ($1, $2, $3, $4);
+                    INSERT INTO events (title, date, owner_id)
+                    VALUES ($1, $2, $3);
                 `,
-        [event.title, event.date, event.members, user.id]);
+        [event.title, event.date, user.id]);
       })
     );
 

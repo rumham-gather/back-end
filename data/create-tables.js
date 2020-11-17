@@ -33,7 +33,6 @@ async function run() {
                   id SERIAL PRIMARY KEY NOT NULL,
                   title VARCHAR(256) NOT NULL,
                   date DATE NOT NULL,
-                  members VARCHAR(512), 
                   owner_id INTEGER NOT NULL REFERENCES users(id)
                 );
 
