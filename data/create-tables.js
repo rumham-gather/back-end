@@ -41,6 +41,16 @@ async function run() {
                   user_id INTEGER NOT NULL REFERENCES users(id),
                   event_id INTEGER NOT NULL REFERENCES events(id)
                 );
+
+                CREATE TABLE user_recipes (
+                  user_id INTEGER NOT NULL REFERENCES users(id),
+                  recipe_id INTEGER NOT NULL REFERENCES recipes(id)
+                );
+
+                CREATE TABLE event_recipes (
+                  event_id INTEGER NOT NULL REFERENCES events(id),
+                  recipe_id INTEGER NOT NULL REFERENCES recipes(id)
+                );
         `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());
