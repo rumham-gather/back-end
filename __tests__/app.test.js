@@ -95,40 +95,34 @@ describe('app routes', () => {
     });
 
 
-    // test('updates a recipe', async() => {
+    test('updates a recipe', async() => {
 
-    //   const expectation = 
-    //   {
-    //     id: 1,
-    //     title: 'Mac n Cheese',
-    //     food_api_id: 3,
-    //     image_url: 'http://placekitten.com/200/300',
-    //     note: 'test',
-    //     completed: false,
-    //     owner_id: 1
-    //   };
+      const expectation = 
+      {
+        id: 1,
+        title: 'Mac n Cheese',
+        food_api_id: 3,
+        image_url: 'http://placekitten.com/200/300',
+        note: 'test',
+        completed: false,
+        owner_id: 1
+      };
 
-    //   const data = await fakeRequest(app)
-    //     .put('/recipes/1')
-    //     .send({
-    //       title: 'Test test test',
-    //       food_api_id: 3,
-    //       image_url: 'http://placekitten.com/200/300',
-    //       note: 'test',
-    //       completed: false,
-    //       owner_id: 1
-    //     })
-    //     .expect('Content-Type', /json/)
-    //     .expect(200);
+      const data = await fakeRequest(app)
+        .put('/recipes/1')
+        .send({
+          title: 'Test test test',
+          food_api_id: 3,
+          image_url: 'http://placekitten.com/200/300',
+          note: 'test',
+          completed: false,
+          owner_id: 1
+        })
+        .expect('Content-Type', /json/)
+        .expect(200);
 
-    //   const newRecipe = await fakeRequest(app)
-    //     .get('/recipes')
-    //     .expect('Content-Type', /json/)
-    //     .expect(200);
-
-    //   expect(data.body).toEqual(expectation);
-    //   expect(newRecipe.body.length).toEqual(4);
-    // });
+      expect(data.body).toEqual(expectation);
+    });
 
 
 
