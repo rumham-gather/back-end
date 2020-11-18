@@ -5,6 +5,7 @@ const events = require('./events.js');
 const usersData = require('./users.js');
 const userEvents = require('./user-events.js');
 const userRecipes = require('./user-recipes.js');
+const eventRecipes = require('./event-recipes.js');
 const { getEmoji } = require('../lib/emoji.js');
 
 run();
@@ -65,6 +66,16 @@ async function run() {
                     VALUES ($1, $2);
                 `,
         [userRecipe.user_id, userRecipe.recipe_id]);
+      })
+    );
+
+    await Promise.all(
+      eventRecipes.map(eventRecipe => {
+        return client.query(`
+                    INSERT INTO event_recipes (event_id, recipe_id)
+                    VALUES ($1, $2);
+                `,
+        [eventRecipe.event_id, eventRecipe.recipe_id]);
       })
     );
 
