@@ -1,17 +1,17 @@
 module.exports = [
   {
     email: 'john@arbuckle.com',
-    displayName: 'John',
+    display_name: 'John',
     hash: 1234
   },
   {
     email: 'richard@richard.com',
-    displayName: 'Booger',
+    display_name: 'Booger',
     hash: 1234
   },
   {
     email: 'jeff@arbuckle.com',
-    displayName: 'Jeff',
+    display_name: 'Jeff',
     hash: 1234
   }
 ];

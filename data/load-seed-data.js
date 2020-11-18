@@ -22,7 +22,7 @@ async function run() {
                       VALUES ($1, $2, $3)
                       RETURNING *;
                   `,
-        [user.displayName, user.email, user.hash]);
+        [user.display_name, user.email, user.hash]);
       })
     );
       
