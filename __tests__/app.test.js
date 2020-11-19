@@ -35,7 +35,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test.only('returns one recipe', async() => {
+    test('returns one recipe', async() => {
 
       const expectation = {
         'vegetarian': false,
@@ -576,59 +576,35 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
-    // test('returns one recipe', async() => {
+    // test('updates a recipe', async() => {
 
-    //   const expectation = [
-    //     {
-    //       id: 1,
-    //       title: 'Mac n Cheese',
+    //   const expectation = 
+    //   {
+    //     id: 1,
+    //     title: 'Mac n Cheese',
+    //     food_api_id: 3,
+    //     image_url: 'http://placekitten.com/200/300',
+    //     note: 'test',
+    //     completed: false,
+    //     owner_id: 1
+    //   };
+
+    //   const data = await fakeRequest(app)
+    //     .put('/api/recipes/1')
+    //     .send({
+    //       title: 'Test test test',
     //       food_api_id: 3,
     //       image_url: 'http://placekitten.com/200/300',
     //       note: 'test',
     //       completed: false,
     //       owner_id: 1
-    //     }
-    //   ];
-
-    //   const data = await fakeRequest(app)
-
-    //     .get('/api/recipes/1')
+    //     })
     //     .set('Authorization', token)
     //     .expect('Content-Type', /json/)
     //     .expect(200);
 
     //   expect(data.body).toEqual(expectation);
     // });
-
-    test('updates a recipe', async() => {
-
-      const expectation = 
-      {
-        id: 1,
-        title: 'Mac n Cheese',
-        food_api_id: 3,
-        image_url: 'http://placekitten.com/200/300',
-        note: 'test',
-        completed: false,
-        owner_id: 1
-      };
-
-      const data = await fakeRequest(app)
-        .put('/api/recipes/1')
-        .send({
-          title: 'Test test test',
-          food_api_id: 3,
-          image_url: 'http://placekitten.com/200/300',
-          note: 'test',
-          completed: false,
-          owner_id: 1
-        })
-        .set('Authorization', token)
-        .expect('Content-Type', /json/)
-        .expect(200);
-
-      expect(data.body).toEqual(expectation);
-    });
 
     // test('returns all events', async() => {
 
