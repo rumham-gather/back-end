@@ -5,6 +5,9 @@ const { execSync } = require('child_process');
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
 const client = require('../lib/client');
+const recipeData = require('../data/recipe.json');
+const { mungedRecipe } = require('../utils.js');
+
 
 describe('app routes', () => {
   describe('routes', () => {
@@ -200,6 +203,31 @@ describe('app routes', () => {
         .expect(200);
 
       expect(data.body).toEqual(expectation);
+    });
+
+    test('tests munged recipe function', async() => {
+
+      const expectation = 
+        {
+          title: 'Shrimp and Lemongrass Soup',
+          food_api_id: 1558837,
+          image_url: 'https://spoonacular.com/recipeImages/1558837-556x370.jpg',
+          ingredients: [
+            '6 raw jumbo shrimp, peeled and deviened, peels reserved',
+            '2 lemongrass stems',
+            '1 scallion, thinly sliced',
+            '1 c. bean sprouts',
+            '1 lime, juiced',
+            '1 carrot, peeled and julienned',
+            '1/2 daikon, peeled and julienned',
+            '4 c. chicken stock',
+            'Mint, for garnish',
+          ],
+          instructions: 'Cut off the white part of the lemongrass stems, reserving tops. Cut the white part into inch long pieces and flatten with the knife. Bring chicken stock to a boil in a large stockpot and add lemongrass stem and shrimp shells. Simmer for 2 minutes, then set aside to infuse.\nStrain stock, then return to stock pot. Slice the remaining lemongrass stem and finely chop. Add to stock along with shrimp, and simmer for 3-4 minutes until shrimp is pink. Add lime juice, scallions, bean sprouts, carrots and daikon.\nStir well and season well. Serve with a mint garnish.',
+        };
+
+      const results = mungedRecipe(recipeData);
+      expect(results).toEqual(expectation);
     });
   });
 });
