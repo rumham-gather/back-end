@@ -43,8 +43,9 @@ async function run() {
                 );
 
                 CREATE TABLE user_recipes (
+                  id SERIAL PRIMARY KEY NOT NULL,
                   user_id INTEGER NOT NULL REFERENCES users(id),
-                  recipe_id INTEGER NOT NULL REFERENCES recipes(id)
+                  recipe_id INTEGER NOT NULL 
                 );
 
                 CREATE TABLE event_recipes (
