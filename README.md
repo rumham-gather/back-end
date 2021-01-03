@@ -6,7 +6,7 @@
 
 ## Description
 
-_ Gather is a recipe application that allows users to browse, save recipes and contribute to food events with friends and family_
+Gather is a recipe application that allows users to browse, save recipes and contribute to food events with friends and family.
 
 ## Setup/Installation Requirements
 
@@ -30,7 +30,7 @@ _Questions or comments can be directed to [Jeff Irvine ](jirvine1212@gmail.com),
 
 ## External API
 
-* _Recipe API_ <-----> CHANGE THIS!
+* [Spoonacular API](https://spoonacular.com/food-api)
 
 ### License
 
